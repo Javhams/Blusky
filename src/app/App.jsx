@@ -1,45 +1,32 @@
-import { useState } from 'react'
-import logo from '../logo.svg'
-import '../App.css'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React from "react";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import ThemeConfig from "../@config/themeConfig/theme";
 
-function App() {
-  const [count, setCount] = useState(0)
+import Navigation from "./modules/main/Navigation";
+import Footer from "./modules/footer/footer";
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+const App = () => {
+  return(
+    <Router>
+        <Navigation />
+        <Routes>
+          <Route path="/footer" element={<Footer />} />
+        </Routes>
+      </Router>
   )
 }
 
-export default App
+const theme = createTheme(ThemeConfig.default)
+const CustomTheme = (props) => {
+  return (
+    <ThemeProvider theme={theme} >
+      <App />
+      <CssBaseline />
+      {props.children}
+    </ThemeProvider>
+  )
+}
+
+export default CustomTheme;
