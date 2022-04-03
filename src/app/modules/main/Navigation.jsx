@@ -22,13 +22,6 @@ const styleLogo = {
   maxheight:'70px',
 }
 
-const typeS = {
-  '&.MuiTypography-root': {
-    display: 'flex',
-    justifyContent: 'flex-end'
-  }
-}
-
 const menuS = {
   '&.MuiSvgIcon-root': {
     fontSize:'2.3rem'
@@ -108,7 +101,7 @@ const Navigation = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, ...typeS}}
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end'}}
           >
             <img src={logo} alt="goes logo"/>
           </Typography>
