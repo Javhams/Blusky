@@ -9,24 +9,23 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 // import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-// import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-
 import logo from '/@img/svg/logo1.svg'
 
-const pages = ['Products', 'Pricing', 'Blog'];
+import {
+  Dashboard as DashboardIcon,
+  ShoppingCart as ShoppingCartIcon,
+  Settings as SettingsIcon,
+} from '@mui/icons-material';
+import Listnav from './Listnav'
 
+const styledIcon = {
+  color: (theme) => theme.palette.secondary[50],
+};
 
 const styleLogo = {
   maxwidth:'70px',
   maxheight:'70px',
-}
-
-const typeS = {
-  '&.MuiTypography-root': {
-    display: 'flex',
-    justifyContent: 'flex-end'
-  }
 }
 
 const menuS = {
@@ -37,23 +36,40 @@ const menuS = {
 
 const Navigation = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
+  const routes = [
+    {
+      to: '/getsky',
+      icon: <DashboardIcon sx={styledIcon} />,
+      name: 'Getsky',
+      key: 'getS'
+    },
+    {
+      to: '/blog',
+      icon: <SettingsIcon sx={styledIcon} />,
+      name: 'Blog',
+      key: 'blogS'
+    },
+    {
+      to:'/about',
+      icon: <ShoppingCartIcon sx={styledIcon} />,
+      name: 'About',
+      key: 'aboutS'
+    },
+    {
+      to:'/footer',
+      icon: <ShoppingCartIcon sx={styledIcon} />,
+      name: 'footer',
+      key: 'adx'
+    }
+  ];
   return (
     <AppBar position="static">
       <Container maxWidth="xl" sx={{height:'60px'}}>
@@ -97,9 +113,9 @@ const Navigation = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {routes.map((routes, index) => (
+                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                  <Listnav routes={routes} />
                 </MenuItem>
               ))}
             </Menu>
@@ -108,45 +124,20 @@ const Navigation = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, ...typeS}}
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end'}}
           >
             <img src={logo} alt="goes logo"/>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {routes.map((routes, index) => (
               <Button
-                key={page}
+                key={index}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {routes.name}
               </Button>
             ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Menu
-              sx={{ mt: '50px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {/* {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))} */}
-            </Menu>
           </Box>
         </Toolbar>
       </Container>

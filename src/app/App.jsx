@@ -5,7 +5,9 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import ThemeConfig from "../@config/themeConfig/theme";
 
 import Navigation from "./modules/main/Navigation";
-import Footer from "./modules/footer/footer";
+import Footer from "./modules/footer/pages/footer";
+import GetSky from './modules/get Sky/pages/getSky';
+// import Linstview from './modules/main/components/Listnav';
 
 const App = () => {
   return(
@@ -13,6 +15,8 @@ const App = () => {
         <Navigation />
         <Routes>
           <Route path="/footer" element={<Footer />} />
+          <Route path="/getsky" element={<GetSky />} />
+          {/* <Route path="/listview" element={<Linstview />} /> */}
         </Routes>
       </Router>
   )
