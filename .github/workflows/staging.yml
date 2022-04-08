@@ -17,4 +17,4 @@ jobs:
         server: ftp.blusky.online
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /home/u669885467/domains/staging.blusky.online/public_html
+        server-dir: /home/u669885467/domains/staging.blusky.online/public_html/
