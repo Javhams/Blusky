@@ -14,7 +14,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: ftp://javiercp.com
+        server: ftp.blusky.online
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /public_html/production.watch-learn.com/
+        server-dir: /home/u669885467/domains/blusky.online/public_html
