@@ -17,4 +17,4 @@ jobs:
         server: ftp.blusky.online
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
-        server-dir: /public_html/staging.watch-learn.com/
+        server-dir: /public_html/
