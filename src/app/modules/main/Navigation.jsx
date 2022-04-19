@@ -7,17 +7,15 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-// import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import logo from '/@img/svg/logo1.svg'
-
 import {
   Dashboard as DashboardIcon,
   ShoppingCart as ShoppingCartIcon,
   Settings as SettingsIcon,
 } from '@mui/icons-material';
-import Listnav from './Listnav'
+import Listnav from './components/Listnav'
+import ButtoNav from './components/ButtonNav';
 
 const styledIcon = {
   color: (theme) => theme.palette.secondary[50],
@@ -31,6 +29,13 @@ const styleLogo = {
 const menuS = {
   '&.MuiSvgIcon-root': {
     fontSize:'2.3rem'
+  }
+}
+
+const boxS ={
+  '&.MuiBox-root': {
+    display: 'flex',
+    justifyContent: 'flex-end'
   }
 }
 
@@ -66,12 +71,12 @@ const Navigation = () => {
     {
       to:'/footer',
       icon: <ShoppingCartIcon sx={styledIcon} />,
-      name: 'footer',
+      name: 'Footer',
       key: 'adx'
     }
   ];
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ background: theme => theme.palette.primary['A400']}}>
       <Container maxWidth="xl" sx={{height:'60px'}}>
         <Toolbar disableGutters>
           <Typography
@@ -128,15 +133,9 @@ const Navigation = () => {
           >
             <img src={logo} alt="goes logo"/>
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ ...boxS}}>
             {routes.map((routes, index) => (
-              <Button
-                key={index}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {routes.name}
-              </Button>
+              <ButtoNav key={index} routes={routes}/>
             ))}
           </Box>
         </Toolbar>
